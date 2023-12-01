@@ -22,5 +22,5 @@ int main()
     
     return 0;
 
-    //SFML erstellt
+    //SFML erstellt!
 }
