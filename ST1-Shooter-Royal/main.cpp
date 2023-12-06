@@ -1,12 +1,19 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
-    sf::CircleShape player(25.f);   // Spieler wird erzeugt
+    
+    sf::Texture Player;
+    Player.loadFromFile("Player.png");
+    sf::Sprite player(Player);
+
+    //sf::CircleShape player(25.f);   // Spieler wird erzeugt
     player.setPosition(920.f, 480.f);   // Position in der Mitte
-    player.setFillColor(sf::Color(255, 211, 155)); // Farbe 
+    //player.setFillColor(sf::Color(255, 211, 155)); // Farbe 
 
     while (window.isOpen())
     {
@@ -37,7 +44,7 @@ int main()
             player.move(0.f, 1.f);      // Steuerung Runter
         }
 
-        window.clear();
+        window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
         window.draw(player);
         window.display();
     }
