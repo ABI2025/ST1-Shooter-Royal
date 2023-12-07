@@ -6,12 +6,12 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
-    
-    sf::Texture Player;                     // Textur Spieler
-    Player.loadFromFile("Texturen/Player.png");       // aus Bild
+    // Textur des Spielers
+    sf::Texture Player;
+    Player.loadFromFile("Texture/Player.png");       
     sf::Sprite player(Player);              
 
-    player.setPosition(920.f, 480.f);   // Position in der Mitte
+    player.setPosition(920.f, 480.f);
    
     while (window.isOpen())
     {
@@ -22,24 +22,28 @@ int main()
                 window.close();
         }
 
+        // Steuerung Links
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            player.move(-1, 0);     // Steuerung Links
+            player.move(-1.f, 0.f);     
         }
 
+        // Steuerung Rechts
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            player.move(1.f, 0.f);      // Steuerung Rechts
+            player.move(1.f, 0.f);      
         }
 
+        // Steuerung Hoch
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            player.move(0.f, -1.f);     // Steuerung Hoch
+            player.move(0.f, -1.f);     
         }
 
+        // Steuerung Runter
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            player.move(0.f, 1.f);      // Steuerung Runter
+            player.move(0.f, 1.f);      
         }
 
         window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
