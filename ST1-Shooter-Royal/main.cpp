@@ -7,14 +7,12 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
     
-    sf::Texture Player;
-    Player.loadFromFile("Player.png");
-    sf::Sprite player(Player);
+    sf::Texture Player;                     // Textur Spieler
+    Player.loadFromFile("Texturen/Player.png");       // aus Bild
+    sf::Sprite player(Player);              
 
-    //sf::CircleShape player(25.f);   // Spieler wird erzeugt
     player.setPosition(920.f, 480.f);   // Position in der Mitte
-    //player.setFillColor(sf::Color(255, 211, 155)); // Farbe 
-
+   
     while (window.isOpen())
     {
         sf::Event event;
@@ -26,7 +24,7 @@ int main()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            player.move(-1.f, 0.f);     // Steuerung Links
+            player.move(-1, 0);     // Steuerung Links
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
