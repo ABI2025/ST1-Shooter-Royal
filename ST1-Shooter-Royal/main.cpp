@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Window/Mouse.hpp>
 
 int main()
 {
@@ -12,6 +13,10 @@ int main()
     sf::Sprite player(Player);              
 
     player.setPosition(920.f, 480.f);
+
+    //Positonierung der Maus
+    sf::Mouse Maus;
+    Maus.setPosition(sf::Vector2i(100, 200), window);
    
     while (window.isOpen())
     {
