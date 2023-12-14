@@ -8,7 +8,7 @@ int main()
 
     // Textur des Spielers
     sf::Texture Player;
-    Player.loadFromFile("Texture/Player.png");       
+    Player.loadFromFile("Texturen/Player.png");       
     sf::Sprite player(Player);              
 
     player.setPosition(920.f, 480.f);
@@ -25,25 +25,25 @@ int main()
         // Steuerung Links
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            player.move(-1.f, 0.f);     
+            player.move(-0.1, 0);     
         }
 
         // Steuerung Rechts
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            player.move(1.f, 0.f);      
+            player.move(0.1, 0);      
         }
 
         // Steuerung Hoch
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            player.move(0.f, -1.f);     
+            player.move(0, -0.1);     
         }
 
         // Steuerung Runter
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            player.move(0.f, 1.f);      
+            player.move(0, 0.1);      
         }
 
         window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
