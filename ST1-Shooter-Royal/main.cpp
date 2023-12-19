@@ -7,6 +7,8 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
+    window.setFramerateLimit(60);
+
     // Textur des Spielers
     sf::Texture Player;
     Player.loadFromFile("Texturen/Player.png");       
@@ -30,25 +32,25 @@ int main()
         // Steuerung Links
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            player.move(-0.1, 0);     
+            player.move(-10, 0);     
         }
 
         // Steuerung Rechts
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            player.move(0.1, 0);      
+            player.move(10, 0);      
         }
 
         // Steuerung Hoch
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            player.move(0, -0.1);     
+            player.move(0, -10);     
         }
 
         // Steuerung Runter
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            player.move(0, 0.1);      
+            player.move(0, 10);      
         }
 
         window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
