@@ -21,9 +21,15 @@
     <ClCompile Include="Pistole.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Menue.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pistole.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Menue.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,9 +2,11 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include"Menue.h"
 
 int main()
 {
+    Menue menue;
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
     window.setFramerateLimit(60);
@@ -51,6 +53,11 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             player.move(0, 10);      
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+           menue.spielEnde(&window);
         }
 
         window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
