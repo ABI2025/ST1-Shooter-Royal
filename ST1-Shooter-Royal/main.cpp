@@ -10,7 +10,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
 
     window.setFramerateLimit(60);
-
+    menue.startMenue(&window);
     // Textur des Spielers
     sf::Texture Player;
     Player.loadFromFile("Texturen/Player.png");       
