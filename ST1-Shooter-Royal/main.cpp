@@ -4,66 +4,128 @@
 #include <SFML/Window/Mouse.hpp>
 #include"Menue.h"
 
+using namespace std;
+using namespace sf;
+
+void menuescreen(RenderWindow &);
+
 int main()
 {
-    Menue menue;
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Shooter-Royal");    // Fenster wurde erstellt
-
+    RenderWindow window(VideoMode(1920,1080), "Shooter-Royal",Style::Fullscreen);    // Fenster wurde erstellt
+    
+    
     window.setFramerateLimit(60);
-    menue.startMenue(&window);
+
     // Textur des Spielers
-    sf::Texture Player;
+    Texture Player;
     Player.loadFromFile("Texturen/Player.png");       
-    sf::Sprite player(Player);              
+    Sprite player(Player);              
 
     player.setPosition(920.f, 480.f);
 
-    //Positonierung der Maus
-    sf::Mouse Maus;
-    Maus.setPosition(sf::Vector2i(100, 200), window);
-   
+    
     while (window.isOpen())
     {
-        sf::Event event;
+        Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == Event::Closed)
                 window.close();
         }
 
         // Steuerung Links
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (Keyboard::isKeyPressed(Keyboard::A))
         {
             player.move(-10, 0);     
         }
 
         // Steuerung Rechts
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (Keyboard::isKeyPressed(Keyboard::D))
         {
             player.move(10, 0);      
         }
 
         // Steuerung Hoch
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        if (Keyboard::isKeyPressed(Keyboard::W))
         {
             player.move(0, -10);     
         }
 
         // Steuerung Runter
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (Keyboard::isKeyPressed(Keyboard::S))
         {
             player.move(0, 10);      
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        if (Keyboard::isKeyPressed(Keyboard::Tab))
         {
-           menue.spielEnde(&window);
+          menuescreen(window);
+          
         }
 
-        window.clear(sf::Color(50, 205, 50));       // Hintergrundfarbe
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)) 
+        {
+            
+            window.close();
+        }
+
+        window.clear(Color(50, 205, 50));       // Hintergrundfarbe
         window.draw(player);
         window.display();
     }
-    
+
     return 0;
+}
+
+
+void menuescreen(RenderWindow& game) 
+{
+
+    RenderWindow menuewindow(VideoMode(1920, 1080), "Menue");
+    Menue menu( 1920, 1080);
+
+    for (; menuewindow.isOpen();)
+    {
+
+        Event menuescreen;
+
+
+        while (menuewindow.pollEvent(menuescreen))
+        {
+
+            //Window Close
+
+            if (Keyboard::isKeyPressed(Keyboard::Escape))  
+            {
+                menuewindow.close(); 
+            }
+
+            //Menue Navigation
+
+            if (Keyboard::isKeyPressed(Keyboard::Up))
+            {
+                menu.moveUp();
+            }
+
+            if (Keyboard::isKeyPressed(Keyboard::Down))
+            {
+                menu.moveDown();
+            }
+
+            //Menue Selection
+
+            if (Keyboard::isKeyPressed(Keyboard::Enter))
+            {
+                menu.menuSelection(menuewindow,game);
+            }
+
+
+
+
+            menuewindow.clear(Color::Black);        // Hintergrundfarbe
+            menu.drawMenue(menuewindow); 
+            menuewindow.display(); 
+        }
+
+    }
 }

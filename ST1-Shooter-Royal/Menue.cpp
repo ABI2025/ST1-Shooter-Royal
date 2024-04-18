@@ -1,8 +1,31 @@
 #include <SFML/Graphics.hpp>
 #include "Menue.h"
+#include <iostream>
 
-Menue::Menue()
+
+Menue::Menue(int hoehe, int breite)
 {
+
+	if (!font.loadFromFile("Fonts/Roboto-Black.ttf")) {
+		std::cout << "No File Founded !";
+	}
+	menu[0].setFont(font);
+	menu[0].setFillColor(sf::Color::Blue);
+	menu[0].setString("Play");
+	menu[0].setPosition(breite / 2, hoehe / (MAX_NUMBER_OF_ITEMS + 1) * 0.5);
+	menu[0].setCharacterSize(60);
+
+	menu[1].setFont(font);
+	menu[1].setFillColor(sf::Color::White);
+	menu[1].setString("Options");
+	menu[1].setPosition(breite / 2, hoehe / (MAX_NUMBER_OF_ITEMS + 1) * 1);
+	menu[1].setCharacterSize(60);
+
+	menu[2].setFont(font);
+	menu[2].setFillColor(sf::Color::White);
+	menu[2].setString("Exit");
+	menu[2].setPosition(breite / 2, hoehe / (MAX_NUMBER_OF_ITEMS + 1) * 1.5);
+	menu[2].setCharacterSize(60);
 
 }
 
@@ -11,26 +34,61 @@ Menue::~Menue()
 
 }
 
-void Menue::startMenue(sf::RenderWindow* window)
+void Menue::moveUp()
 {
-	window->clear(sf::Color(0,0,0));
-	sf::RectangleShape rshape1(sf::Vector2f(250, 100));
-	rshape1.setFillColor(sf::Color(139, 0, 0));
-	rshape1.setPosition(sf::Vector2f(window->getPosition().x / 2, window->getPosition().y / 2));
-	/*system("pause");*/
+	menu[selectedItem].setFillColor(sf::Color::White);
+	selectedItem--;
+
+	if (selectedItem < 0) {
+		selectedItem = 2;
+	}
+	menu[selectedItem].setFillColor(sf::Color::Blue);
+
+	
 }
 
-void Menue::einstellungen()
+void Menue::moveDown()
 {
+	menu[selectedItem].setFillColor(sf::Color::White);
+	selectedItem++;
+
+	if (selectedItem > 2) {
+		selectedItem = 0;
+	}
+	menu[selectedItem].setFillColor(sf::Color::Blue);
+
 
 }
 
-void Menue::spielStart()
+void Menue::menuSelection(sf::RenderWindow &window, sf::RenderWindow &game)
 {
+	int selectedItem = this->selectedItem;
 
+	switch (selectedItem)
+	{
+	case 0: {
+		window.close();
+		break;
+	}
+	case 1: {
+		window.close();
+		sf::RenderWindow Settings(sf::VideoMode(1920, 1080), "Settings");
+		break;
+	}
+	case 2: {
+		window.close();
+		game.close();
+		break;
+	}
+
+	default:
+		break;
+	}
 }
 
-void Menue::spielEnde(sf::RenderWindow* window)
+void Menue::drawMenue(sf::RenderWindow& menue)
 {
-	window->close();
+	for (int i = 0; i < 3; i++) {
+		menue.draw(menu[i]);
+	}
 }
