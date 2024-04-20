@@ -2,6 +2,7 @@
 #include "Menue.h"
 #include <iostream>
 
+//Menu erstellen
 
 Menue::Menue(int hoehe, int breite)
 {
@@ -33,6 +34,8 @@ Menue::~Menue()
 {
 
 }
+
+//Menu Steuerung
 
 void Menue::moveUp()
 {
@@ -85,6 +88,8 @@ void Menue::menuSelection(sf::RenderWindow &window, sf::RenderWindow &game)
 		break;
 	}
 }
+
+//Menu Anzeigen
 
 void Menue::drawMenue(sf::RenderWindow& menue)
 {

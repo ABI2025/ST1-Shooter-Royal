@@ -7,12 +7,13 @@
 using namespace std;
 using namespace sf;
 
-void menuescreen(RenderWindow &);
+void menuescreen(RenderWindow &);       //Menu öffnen
 
 int main()
 {
     RenderWindow window(VideoMode(1920,1080), "Shooter-Royal",Style::Fullscreen);    // Fenster wurde erstellt
     
+    menuescreen(window);
     
     window.setFramerateLimit(60);
 
@@ -56,13 +57,13 @@ int main()
         {
             player.move(0, 10);      
         }
-
+        // Menu während des Spieles öffnen
         if (Keyboard::isKeyPressed(Keyboard::Tab))
         {
           menuescreen(window);
           
         }
-
+        // Spiel Schließen
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)) 
         {
             
